@@ -23,7 +23,7 @@ colunas = [
 consolidado = pd.DataFrame(columns=colunas)
 
 # busca o nome dos arquivos a serem consolidados
-arquivos = os.listdir("datasets")
+arquivos = os.listdir("BD")
 
 # realiza a consolidação dos arquivos (apenas .xlsx)
 for excel in arquivos:
@@ -34,7 +34,7 @@ for excel in arquivos:
         pais = dados_arquivo[1].replace('.xlsx', '')
         
         try:
-            df = pd.read_excel(f'datasets\\{excel}')
+            df = pd.read_excel(f'BD\\{excel}')
             df.insert(0, 'Segmento', segmento)
             df.insert(1, 'País', pais)        
             consolidado = pd.concat([consolidado, df])  # Consolidar as planilhas usando o método concat    
